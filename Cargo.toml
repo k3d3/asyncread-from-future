@@ -1,0 +1,13 @@
+[package]
+name = "asyncread-test"
+version = "0.1.0"
+authors = ["k3d3 <k@3d3.ca>"]
+edition = "2018"
+license = "CC0-1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3.13"
+owning_ref = "0.4.1"
+tokio = { version = "1.4.0", features = ["macros", "rt-multi-thread", "time", "io-util"] }
