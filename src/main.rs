@@ -92,6 +92,7 @@ impl<'a> AsyncRead for FancyReader<'a> {
     ) -> Poll<Result<()>> {
         let fancy = self.fancy;
         let last_fut = self.last_fut.get_or_insert_with(|| {
+            // SAFETY: As long as last_fut is not leaked outside of FancyReader, this should be safe.
             unsafe { &mut *fancy }.fancy_read(buf.remaining()).boxed()
         });
         match last_fut.poll_unpin(cx) {
